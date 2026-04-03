@@ -17,9 +17,9 @@ export default function TabsLayout() {
             backgroundColor: colors.bgSecondary,
             borderTopColor: colors.border + "50",
             borderTopWidth: 1,
-            height: 65,
-            paddingBottom: 8,
-            paddingTop: 6,
+            height: 70,
+            paddingBottom: 10,
+            paddingTop: 8,
           },
           tabBarActiveTintColor: colors.accent,
           tabBarInactiveTintColor: colors.textSecondary,
@@ -30,27 +30,30 @@ export default function TabsLayout() {
           name="index"
           options={{
             title: "Home",
-            tabBarIcon: ({ focused }) => <Text style={{ fontSize: 18, opacity: focused ? 1 : 0.6 }}>🏠</Text>,
+            tabBarIcon: ({ focused }) => <Text style={{ fontSize: 20, opacity: focused ? 1 : 0.6 }}>🏠</Text>,
           }}
         />
         <Tabs.Screen
           name="expenses"
           options={{
             title: "Expenses",
-            tabBarIcon: ({ focused }) => <Text style={{ fontSize: 18, opacity: focused ? 1 : 0.6 }}>📝</Text>,
+            tabBarIcon: ({ focused }) => <Text style={{ fontSize: 20, opacity: focused ? 1 : 0.6 }}>📝</Text>,
           }}
         />
         <Tabs.Screen
           name="add"
           options={{
-            title: "",
-            tabBarButton: () => (
-              <TouchableOpacity
-                onPress={() => setShowAdd(true)}
-                style={[styles.fab, { backgroundColor: colors.accent, shadowColor: colors.accent }]}
-              >
-                <Text style={styles.fabIcon}>+</Text>
-              </TouchableOpacity>
+            title: " ",
+            tabBarButton: (props) => (
+              <View style={styles.fabWrapper}>
+                <TouchableOpacity
+                  onPress={() => setShowAdd(true)}
+                  style={[styles.fab, { backgroundColor: colors.accent }]}
+                  activeOpacity={0.8}
+                >
+                  <Text style={styles.fabIcon}>+</Text>
+                </TouchableOpacity>
+              </View>
             ),
           }}
         />
@@ -58,14 +61,14 @@ export default function TabsLayout() {
           name="budget"
           options={{
             title: "Budget",
-            tabBarIcon: ({ focused }) => <Text style={{ fontSize: 18, opacity: focused ? 1 : 0.6 }}>🎯</Text>,
+            tabBarIcon: ({ focused }) => <Text style={{ fontSize: 20, opacity: focused ? 1 : 0.6 }}>🎯</Text>,
           }}
         />
         <Tabs.Screen
           name="settings"
           options={{
             title: "Settings",
-            tabBarIcon: ({ focused }) => <Text style={{ fontSize: 18, opacity: focused ? 1 : 0.6 }}>⚙️</Text>,
+            tabBarIcon: ({ focused }) => <Text style={{ fontSize: 20, opacity: focused ? 1 : 0.6 }}>⚙️</Text>,
           }}
         />
       </Tabs>
@@ -76,17 +79,23 @@ export default function TabsLayout() {
 }
 
 const styles = StyleSheet.create({
-  fab: {
-    width: 52,
-    height: 52,
-    borderRadius: 26,
+  fabWrapper: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: -20,
+  },
+  fab: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: -28,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.25,
     shadowRadius: 8,
     elevation: 8,
   },
-  fabIcon: { color: "#fff", fontSize: 28, fontWeight: "300", marginTop: -2 },
+  fabIcon: { color: "#fff", fontSize: 30, fontWeight: "300", marginTop: -2 },
 });
